@@ -1,4 +1,4 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//ï¿½ A+ Computer Science  -  www.apluscompsci.com
 //Name -
 //Date -
 //Class -
@@ -20,26 +20,37 @@ public class MadLib
 
 	public MadLib()
 	{
-
+		verbs.add("punched");
+		nouns.add("Wal-Mart");
+		adjectives.add("massive");
+		story="I punched Wal-Mart in a massive way.";
 	}
 
 	public MadLib(String fileName)
 	{
 		//load stuff
-
+		loadNouns();
+		loadAdjectives();
+		loadVerbs();
 		try
-		{
+		{ 
+			String sym = " ";
 			//Read the different parts of the story and concatenate the resulting
-			//story using the symbols to tell you the parts of speech
+						//story using the symbols to tell you the parts of speech
+				String symbols = "#&@";
+		for(int i=0; i<=story.length(); i++)
+		{
+			if (symbols.indexOf(story.substring(i,i+1)) >-1)
+			 	 sym = story.substring(i,i+1);
 
-
-			//While there is more of the story, read in the word/symbol
-
-				//If what was read in is one of the symbols, find a random
-				//word to replace it.
-			}
-
-
+			if (sym.substring(1) == "#")
+					story.indexOf(i).equals(story.getRandomNoun()) ;
+			else if (sym.substring(1) == "@")
+					story.indexOf(i).equals(story.getRandomVerb()) ;
+			else if (sym.substring(1) == "&")
+					story.indexOf(i).equals(story.getRandomAdjective()) ;	  
+		}
+		
 		}
 		catch(Exception e)
 		{
@@ -52,7 +63,12 @@ public class MadLib
 	{
 		try
 		{
+			Scanner reader = new Scanner(new File("nouns.dat"));
 
+			while(reader.hasNext())
+			{
+				nouns.add(reader.next());
+			}
 		}
 		catch(Exception e)
 		{
@@ -65,6 +81,12 @@ public class MadLib
 	{
 		try
 		{
+			Scanner scan = new Scanner(new File("verbs.dat"));
+
+			while(scan.hasNext())
+			{
+				verbs.add(scan.next());
+			}
 
 		}
 		catch(Exception e)
@@ -77,6 +99,12 @@ public class MadLib
 	{
 		try
 		{
+			Scanner scan = new Scanner(new File("adjectives.dat"));
+
+			while(scan.hasNext())
+			{
+				adjectives.add(scan.next());
+			}
 
 		}
 		catch(Exception e)
@@ -87,21 +115,22 @@ public class MadLib
 
 	public String getRandomVerb()
 	{
-		return "";
+		//verbs.get(((int)(Math.random()*14 +1)));
+		return "" + verbs.get(((int)(Math.random()*14 +1)));
 	}
 
 	public String getRandomNoun()
 	{
-		return "";
+		return "" + nouns.get(((int)(Math.random()*19 +1)));
 	}
 
 	public String getRandomAdjective()
 	{
-		return "";
+		return "" + adjectives.get(((int)(Math.random()*17 +1)));
 	}
 
 	public String toString()
 	{
-		return "";
+		return "" + verbs + adjectives + nouns;
 	}
 }
