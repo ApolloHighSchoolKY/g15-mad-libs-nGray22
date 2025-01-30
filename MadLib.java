@@ -33,7 +33,14 @@ public class MadLib
 		loadAdjectives();
 		loadVerbs();
 		try
-		{ 
+		{ /* 
+			Scanner reader = new Scanner(new File("story.dat"));
+
+			while(reader.hasNext())
+			{
+				if(reader.next().equals("#"))
+					story+=getRandomNoun();
+			}*/
 			String sym = " ";
 			//Read the different parts of the story and concatenate the resulting
 						//story using the symbols to tell you the parts of speech
@@ -48,7 +55,8 @@ public class MadLib
 			else if (sym.substring(1) == "@")
 					story.indexOf(i).equals(story.getRandomVerb()) ;
 			else if (sym.substring(1) == "&")
-					story.indexOf(i).equals(story.getRandomAdjective()) ;	  
+					story.indexOf(i).equals(story.getRandomAdjective()) ;	
+					  
 		}
 		
 		}
