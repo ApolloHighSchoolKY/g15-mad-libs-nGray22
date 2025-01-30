@@ -33,31 +33,31 @@ public class MadLib
 		loadAdjectives();
 		loadVerbs();
 		try
-		{ /* 
+		{  
 			Scanner reader = new Scanner(new File("story.dat"));
 
 			while(reader.hasNext())
 			{
-				if(reader.next().equals("#"))
-					story+=getRandomNoun();
-			}*/
-			String sym = " ";
-			//Read the different parts of the story and concatenate the resulting
-						//story using the symbols to tell you the parts of speech
-				String symbols = "#&@";
-		for(int i=0; i<=story.length(); i++)
-		{
-			if (symbols.indexOf(story.substring(i,i+1)) >-1)
-			 	 sym = story.substring(i,i+1);
+				story+=reader.hasNext();
+			}
 
-			if (sym.substring(1) == "#")
-					story.indexOf(i).equals(story.getRandomNoun()) ;
-			else if (sym.substring(1) == "@")
-					story.indexOf(i).equals(story.getRandomVerb()) ;
-			else if (sym.substring(1) == "&")
-					story.indexOf(i).equals(story.getRandomAdjective()) ;	
-					  
-		}
+			Scanner chop = new Scanner(story)
+			String sym = "";
+			String returnStr = "";
+			while(chop.hasNext())
+				sym = chop.next();
+				if (sym.equals("#"))
+					returnStr += getRandomNoun();
+				else if	(sym.equals("@"))
+					returnStr += getRandomVerb();
+				else if (sym.equals("&"))
+					returnStr += getRandomAdjective();	
+				else	
+					returnStr += story;
+			
+			//Read the different parts of the story and concatenate the resulting
+			//story using the symbols to tell you the parts of speech
+		
 		
 		}
 		catch(Exception e)
